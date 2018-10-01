@@ -12,7 +12,7 @@ export default class App extends React.Component {
             categoriesWithoutParent: [],
             categories: [],
             categoryName: '',
-            parentCategory: ''
+            parentCategory: 0
         }
 
         this.loadCategories = this.loadCategories.bind(this);
@@ -59,6 +59,10 @@ export default class App extends React.Component {
             name: this.state.categoryName, 
             parentId: parseInt(this.state.parentCategory, 10) 
         }).then(resp => {
+            this.setState({
+                categoryName: '',
+                parentCategory: 0
+            });
             this.loadCategories();
         });
     }
@@ -71,6 +75,8 @@ export default class App extends React.Component {
                 <Form 
                     submitMethod={this.handleSubmit}  
                     changeInputMethod={this.handleChange}
+                    categoryName={this.state.categoryName}
+                    parentCategory={this.state.parentCategory}
                     categories={this.state.categories} 
                 />
 
