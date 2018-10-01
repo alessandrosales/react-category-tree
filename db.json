@@ -1,0 +1,19 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Frios",
+      "parentId": 0
+    },
+    {
+      "id": 2,
+      "name": "Massas",
+      "parentId": 0
+    },
+    {
+      "id": 2,
+      "name": "Peixe",
+      "parentId": 1
+    }
+  ]
+}
