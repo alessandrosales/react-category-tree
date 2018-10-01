@@ -1,7 +1,7 @@
 import React from 'react';
 import CategoryList from './CategoryList';
 import Form from './Form';
-import { fetchCategories, postCategory } from '../services/api';
+import { fetchCategories, postCategory, deleteCategory } from '../services/api';
 
 
 export default class App extends React.Component {
@@ -18,6 +18,7 @@ export default class App extends React.Component {
         this.loadCategories = this.loadCategories.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
 
     }
 
@@ -67,6 +68,12 @@ export default class App extends React.Component {
         });
     }
 
+    handleDelete(id) {
+        deleteCategory(id).then(resp => {
+            this.loadCategories();
+        });
+    }
+
     render() {
         return (
             <div>
@@ -80,7 +87,10 @@ export default class App extends React.Component {
                     categories={this.state.categories} 
                 />
 
-                <CategoryList categories={this.state.categoriesWithoutParent} />
+                <CategoryList 
+                    categories={this.state.categoriesWithoutParent} 
+                    deleteCategory={this.handleDelete} 
+                />
             </div>
         )
     }

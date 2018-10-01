@@ -11,7 +11,13 @@ export default class CategoryList extends React.Component {
     }
 
     renderCategories() {
-        return this.props.categories.map((cat, index) => <Category key={index} category={cat} />);
+        return this.props.categories.map((cat, index) => 
+            <Category 
+                deleteCategory={this.props.deleteCategory} 
+                key={index} 
+                category={cat} 
+            />
+        );
     }
 
     render() {
